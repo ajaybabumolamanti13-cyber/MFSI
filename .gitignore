@@ -3,6 +3,7 @@ backend/venv/
 backend/__pycache__/
 backend/**/__pycache__/
 backend/*.db
+*.db
 backend/uploads/*/
 backend/reports_output/*.html
 backend/reports_output/*.pdf
@@ -12,6 +13,7 @@ backend/.env
 frontend/node_modules/
 frontend/dist/
 frontend/.env
+frontend/*.tsbuildinfo
 
 # OS
 .DS_Store
