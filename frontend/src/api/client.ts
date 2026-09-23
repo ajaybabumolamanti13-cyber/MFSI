@@ -18,9 +18,14 @@ api.interceptors.response.use(
   (res) => res,
   (err) => {
     if (err?.response?.status === 401) {
-      localStorage.removeItem('mfis_token')
-      if (!window.location.pathname.includes('/login')) {
-        window.location.href = '/login'
+      // If we have a demo fallback user, DON'T wipe the session —
+      // the AuthContext will use the local demo data instead.
+      const hasDemoFallback = localStorage.getItem('mfis_demo_user')
+      if (!hasDemoFallback) {
+        localStorage.removeItem('mfis_token')
+        if (!window.location.pathname.includes('/login')) {
+          window.location.href = '/login'
+        }
       }
     }
     return Promise.reject(err)
