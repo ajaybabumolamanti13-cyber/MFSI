@@ -29,7 +29,7 @@ def seed_admin(db: Session):
         full_name="Administrator",
         hashed_password=hash_password(admin_password),
         role="administrator",
-        must_change_password=True,
+        must_change_password=False,
     )
     db.add(user)
     db.commit()

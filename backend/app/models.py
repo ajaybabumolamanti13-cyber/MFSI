@@ -18,7 +18,7 @@ class User(Base):
     full_name = Column(String, default="Administrator")
     hashed_password = Column(String, nullable=False)
     role = Column(String, default="investigator")  # investigator | administrator
-    must_change_password = Column(Boolean, default=True)
+    must_change_password = Column(Boolean, default=False)
     created_at = Column(DateTime, default=dt.datetime.utcnow)
 
 

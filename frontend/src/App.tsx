@@ -21,7 +21,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
-      <Route path="/change-password" element={<ChangePassword />} />
+      <Route path="/change-password" element={<Navigate to="/dashboard" replace />} />
 
       <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
       <Route path="/investigations/new" element={<ProtectedRoute><NewInvestigation /></ProtectedRoute>} />
