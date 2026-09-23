@@ -25,7 +25,7 @@ export default function Timeline() {
   const load = () => {
     if (!selected) return
     api.get('/api/timeline', { params: { investigation_id: selected, category: category || undefined } })
-      .then((res) => setEntries(res.data))
+      .then((res) => setEntries(res.data)).catch(() => setEntries([]))
   }
 
   useEffect(load, [selected, category])

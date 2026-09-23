@@ -35,7 +35,7 @@ export default function EvidenceAcquisition() {
 
   const loadEvidence = () => {
     if (!selected) return
-    api.get('/api/evidence', { params: { investigation_id: selected } }).then((res) => setEvidence(res.data))
+    api.get('/api/evidence', { params: { investigation_id: selected } }).then((res) => setEvidence(res.data)).catch(() => setEvidence([]))
   }
 
   useEffect(loadEvidence, [selected])

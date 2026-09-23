@@ -15,6 +15,11 @@ export function useCaseSelector() {
     api.get('/api/investigations').then((res) => {
       setCases(res.data)
       if (res.data.length > 0) setSelected(res.data[0].id)
+    }).catch(() => {
+      // Fallback demo case when backend is unreachable
+      const demoCases = [{ id: 'CASE-DEMO', case_name: '[DEMO] Sample Handset Review', status: 'analyzing' }]
+      setCases(demoCases)
+      setSelected(demoCases[0].id)
     })
   }, [])
 

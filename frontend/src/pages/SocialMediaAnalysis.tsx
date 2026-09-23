@@ -20,7 +20,7 @@ export default function SocialMediaAnalysis() {
 
   useEffect(() => {
     if (!selected) return
-    api.get('/api/social', { params: { investigation_id: selected } }).then((res) => setApps(res.data))
+    api.get('/api/social', { params: { investigation_id: selected } }).then((res) => setApps(res.data)).catch(() => setApps([]))
   }, [selected])
 
   return (

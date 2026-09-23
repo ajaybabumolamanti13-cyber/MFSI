@@ -34,7 +34,7 @@ export default function Devices() {
 
   const loadDevices = () => {
     if (!selected) return
-    api.get('/api/devices', { params: { investigation_id: selected } }).then((res) => setDevices(res.data))
+    api.get('/api/devices', { params: { investigation_id: selected } }).then((res) => setDevices(res.data)).catch(() => setDevices([]))
   }
 
   useEffect(loadDevices, [selected])

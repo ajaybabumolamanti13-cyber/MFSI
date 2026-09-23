@@ -24,7 +24,7 @@ export default function MessagesAnalysis() {
   const load = () => {
     if (!selected) return
     api.get('/api/messages', { params: { investigation_id: selected, q: search || undefined, contact: contact || undefined } })
-      .then((res) => setMessages(res.data))
+      .then((res) => setMessages(res.data)).catch(() => setMessages([]))
   }
 
   useEffect(load, [selected])

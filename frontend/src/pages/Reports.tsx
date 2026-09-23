@@ -22,7 +22,7 @@ export default function Reports() {
 
   const load = () => {
     if (!selected) return
-    api.get('/api/reports', { params: { investigation_id: selected } }).then((res) => setReports(res.data))
+    api.get('/api/reports', { params: { investigation_id: selected } }).then((res) => setReports(res.data)).catch(() => setReports([]))
   }
 
   useEffect(load, [selected])

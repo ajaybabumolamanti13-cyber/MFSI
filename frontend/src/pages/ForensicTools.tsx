@@ -22,7 +22,7 @@ export default function ForensicTools() {
   const [tools, setTools] = useState<Tool[]>([])
 
   useEffect(() => {
-    api.get('/api/tools').then((res) => setTools(res.data))
+    api.get('/api/tools').then((res) => setTools(res.data)).catch(() => setTools([]))
   }, [])
 
   return (

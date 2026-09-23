@@ -21,7 +21,7 @@ export default function LocationAnalysis() {
 
   useEffect(() => {
     if (!selected) return
-    api.get('/api/location', { params: { investigation_id: selected } }).then((res) => setLocations(res.data))
+    api.get('/api/location', { params: { investigation_id: selected } }).then((res) => setLocations(res.data)).catch(() => setLocations([]))
   }, [selected])
 
   const sourceData = locations.length > 0

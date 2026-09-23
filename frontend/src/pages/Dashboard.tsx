@@ -20,7 +20,19 @@ export default function Dashboard() {
   const [summary, setSummary] = useState<Summary | null>(null)
 
   useEffect(() => {
-    api.get('/api/dashboard/summary').then((res) => setSummary(res.data))
+    api.get('/api/dashboard/summary').then((res) => setSummary(res.data)).catch(() => {
+      // Fallback demo data when backend is unreachable (e.g. Vercel without backend)
+      setSummary({
+        total_cases: 1,
+        open_cases: 1,
+        total_evidence_files: 1,
+        total_ai_findings: 3,
+        high_priority_findings: 1,
+        total_reports: 0,
+        recent_cases: [{ id: 'CASE-DEMO', case_name: '[DEMO] Sample Handset Review', status: 'analyzing' }],
+        recent_reports: [],
+      })
+    })
   }, [])
 
   const chartData = summary

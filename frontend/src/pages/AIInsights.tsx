@@ -26,7 +26,7 @@ export default function AIInsights() {
   const load = () => {
     if (!selected) return
     api.get('/api/ai/findings', { params: { investigation_id: selected, priority: priorityFilter || undefined } })
-      .then((res) => setFindings(res.data))
+      .then((res) => setFindings(res.data)).catch(() => setFindings([]))
   }
 
   useEffect(load, [selected, priorityFilter])

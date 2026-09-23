@@ -21,8 +21,8 @@ export default function CallLogAnalysis() {
 
   const load = () => {
     if (!selected) return
-    api.get('/api/calls', { params: { investigation_id: selected, contact: contact || undefined } }).then((res) => setCalls(res.data))
-    api.get('/api/calls/frequent-contacts', { params: { investigation_id: selected } }).then((res) => setFrequent(res.data))
+    api.get('/api/calls', { params: { investigation_id: selected, contact: contact || undefined } }).then((res) => setCalls(res.data)).catch(() => setCalls([]))
+    api.get('/api/calls/frequent-contacts', { params: { investigation_id: selected } }).then((res) => setFrequent(res.data)).catch(() => setFrequent([]))
   }
 
   useEffect(load, [selected])
